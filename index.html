@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Quiz Challenge</title>
+<link rel="stylesheet" href="./Assets/style.css">
+</head>
+<body>
+  <div id="quiz-container">
+    <div id="highscore-link">View Highscores</div>
+    <div id="timer">Time: <span id="time">0</span></div>
+    <h1>Coding Quiz Challenge</h1>
+    <button id="start-btn">Start Quiz</button>
+    <div id="question-container" class="hide">
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+        <!-- Answers will be dynamically injected here -->
+      </div>
+    </div>
+    <div id="end-screen" class="hide">
+      <h1>Game over!</h1>
+      <p>Your score is: <span id="final-score"></span></p>
+      <input type="text" id="username" placeholder="Enter initials" />
+      <button id="submit-score">Submit</button>
+    </div>
+    <div id="highscores-container" class="hide">
+      <!-- Highscores will be dynamically injected here -->
+    </div>
+  </div>
+<script src="./Assets/script.js"></script>
+</body>
+</html>
