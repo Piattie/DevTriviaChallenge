@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coding Quiz Challenge</title>
+<title>Developer Trivia Challenge</title>
 <link rel="stylesheet" href="./Assets/style.css">
 </head>
 <body>
+  <div id="feedback" class="feedback-message"></div>
   <div id="quiz-container">
     <div id="highscore-link">View Highscores</div>
     <div id="timer">Time: <span id="time">0</span></div>
-    <h1>Coding Quiz Challenge</h1>
-    <button id="start-btn">Start Quiz</button>
+    <div id="quiz-intro">
+      <h1>Developer Trivia Challenge</h1>
+      <p>Welcome to the Developer Trivia Challenge! Test your knowledge with a series of questions on JavaScript fundamentals. Be quick but careful—incorrect answers will reduce your time. Finish as fast as you can to score higher and see how you stack up against your peers. Are you ready to put your skills to the test?</p>
+      <button id="start-btn">Start Quiz</button>
+    </div>
     <div id="question-container" class="hide">
       <div id="question">Question</div>
-      <div id="answer-buttons" class="btn-grid">
+      <div id="answer-buttons">
         <!-- Answers will be dynamically injected here -->
       </div>
     </div>
@@ -25,8 +29,14 @@
       <button id="submit-score">Submit</button>
     </div>
     <div id="highscores-container" class="hide">
-      <!-- Highscores will be dynamically injected here -->
+      <h2>Highscores</h2>
+  <ul id="highscores-list">
+  </ul>
+  <button id="go-back">Retry</button>
+  <button id="clear-highscores">Clear Highscores</button>
     </div>
+    <!-- Place this at the bottom of your quiz container -->
+<div id="feedback" class="feedback-message"></div>
   </div>
 <script src="./Assets/script.js"></script>
 </body>
