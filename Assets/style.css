@@ -97,3 +97,11 @@ body {
   cursor: pointer; /* Shows a pointer cursor on hover */
   /* Other styling to make it look like a clickable link */
 }
+/* CSS for the horizontal line */
+#question-container hr {
+  border: none; /* Remove default border */
+  border-top: 1px solid lightgrey; /* Add border on top */
+  margin-top: 20px; /* Adjust margin for spacing */
+  margin-bottom: 20px; /* Add margin at the bottom */
+}
+

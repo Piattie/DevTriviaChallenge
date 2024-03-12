@@ -108,7 +108,6 @@ function selectAnswer(e) {
     button.disabled = true;
   }
 
-  // Check if the answer is correct and display feedback
   if (correct) {
     selectedButton.classList.add('correct');
     feedback.textContent = 'Correct!';
@@ -117,9 +116,12 @@ function selectAnswer(e) {
     selectedButton.classList.add('incorrect');
     feedback.textContent = 'Wrong!';
     feedback.style.color = 'red'; // Optional: red color for wrong feedback
-    // Deduct time for a wrong answer, etc.
-    // ...
+    // Deduct time for a wrong answer
+    var currentTime = parseInt(timerElement.textContent);
+    var penalty = 10; // Adjust this penalty value as needed
+    var newTime = currentTime > penalty ? currentTime - penalty : 0;
   }
+
 
   feedback.style.display = 'block'; // Show feedback message
 
@@ -142,6 +144,8 @@ function endGame() {
   finalScoreElement.textContent = timerElement.textContent;
   questionContainerElement.classList.add('hide'); // Hide questions
   endScreenElement.classList.remove('hide'); // Show end screen
+  clearInterval(quizTimer); // Clear the timer interval
+  timerElement.textContent = '0'; // Set timer to 0 when game ends
 }
 
 function saveHighScore() {
