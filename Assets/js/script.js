@@ -1,4 +1,4 @@
-// The structure of our question objects
+// The structure of question objects
 var questions = [
   {
     question: 'What does HTML stand for?',
@@ -18,9 +18,10 @@ var questions = [
       { text: '||', correct: false }
     ]
   }
-  // More questions as needed...
+  // Can add more questions as needed...
 ];
 
+var remainingTime;
 var shuffledQuestions, currentQuestionIndex, score, quizTimer;
 var startButton = document.getElementById('start-btn');
 var questionContainerElement = document.getElementById('question-container');
@@ -55,17 +56,17 @@ function startGame() {
   document.getElementById('quiz-intro').classList.add('hide'); // Hide intro
   questionContainerElement.classList.remove('hide'); // Show question container
   setNextQuestion(); // Set the first question
+  currentTime = questions.length * 15;
   startTimer(); // Start the quiz timer
   console.log("Starting the game");
 }
 
 function startTimer() {
-  var time = questions.length * 15; // 15 seconds per question
-  timerElement.textContent = time;
+  timerElement.textContent = currentTime;
   quizTimer = setInterval(function() {
-    time--;
-    timerElement.textContent = time;
-    if (time <= 0) {
+    currentTime--;
+    timerElement.textContent = currentTime;
+    if (currentTime <= 0) {
       clearInterval(quizTimer);
       endGame();
     }
@@ -103,42 +104,55 @@ function selectAnswer(e) {
   var feedback = document.getElementById('feedback');
 
   // Disable all buttons first
-  var buttons = answerButtonsElement.getElementsByTagName('button');
-  for (var button of buttons) {
+  Array.from(answerButtonsElement.children).forEach(button => {
     button.disabled = true;
-  }
+  });
 
   if (correct) {
     selectedButton.classList.add('correct');
     feedback.textContent = 'Correct!';
-    feedback.style.color = 'green'; // Optional: green color for correct feedback
+    feedback.style.color = 'green';
   } else {
     selectedButton.classList.add('incorrect');
     feedback.textContent = 'Wrong!';
-    feedback.style.color = 'red'; // Optional: red color for wrong feedback
+    feedback.style.color = 'red';
+    
     // Deduct time for a wrong answer
-    var currentTime = parseInt(timerElement.textContent);
-    var penalty = 10; // Adjust this penalty value as needed
-    var newTime = currentTime > penalty ? currentTime - penalty : 0;
+    updateTimer(-10); // Deduct 10 seconds for wrong answer
+    function updateTimer(change) {
+      currentTime += change;
+      timerElement.textContent = currentTime > 0 ? currentTime : 0;
+    
+      if (currentTime <= 0) {
+        clearInterval(quizTimer);
+        setTimeout(endGame, 2000); // Wait 2 seconds before ending the game to show feedback
+      }
+    }
   }
 
-
-  feedback.style.display = 'block'; // Show feedback message
-
-  // Delay before moving to the next question or ending the game
-  // ...
-  
-  // Optionally, hide the feedback after some time
+  feedback.style.display = 'block';
   setTimeout(function() {
-    feedback.style.display = 'none'; // Hide feedback message
+    feedback.style.display = 'none';
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
       currentQuestionIndex++;
       setNextQuestion();
     } else {
       endGame();
     }
-  }, 2000); // Hide feedback after 2 seconds
+  }, 2000);
 }
+
+function updateTimer(change) {
+  var currentTime = parseInt(timerElement.textContent);
+  var newTime = currentTime + change;
+  timerElement.textContent = newTime > 0 ? newTime : 0;
+
+  if (newTime <= 0) {
+    clearInterval(quizTimer);
+    setTimeout(endGame, 2000); // Wait 2 seconds before ending the game to show feedback
+  }
+}
+
 
 function endGame() {
   finalScoreElement.textContent = timerElement.textContent;
