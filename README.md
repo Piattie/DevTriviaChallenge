@@ -17,7 +17,7 @@ Welcome to the Developer Trivia Challenge! Test your knowledge with a series of 
 - JavaScript
 
 ## Screenshot
-[Developer Trivia Challenge Screenshot](./Assets/Images/SWIFT-Password-Generator-Screenshot.png)
+[Developer Trivia Challenge Screenshot](./Assets/Images/Screenshot.GIF)
 
 ## Live Site
-[Visit the live site](https://piattie.github.io/SWIFT-Password-Generator/)
+[Visit the live site](https://piattie.github.io/DevTriviaChallenge/)
