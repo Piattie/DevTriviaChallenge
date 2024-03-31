@@ -16,8 +16,10 @@ Welcome to the Developer Trivia Challenge! Test your knowledge with a series of 
 - CSS
 - JavaScript
 
+
 ## Screenshot
-[Developer Trivia Challenge Screenshot](./Assets/Images/Screenshot.GIF)
+
+![Developer Trivia Challenge Screenshot](./Assets/Images/Screenshot.GIF)
 
 ## Live Site
 [Visit the live site](https://piattie.github.io/DevTriviaChallenge/)
